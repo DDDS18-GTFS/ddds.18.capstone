@@ -13,15 +13,15 @@ This project continuously collects real-time vehicle position data from the City
 
 ---
 ## Project Structure
-/abq-transit-project/
-├── docker-compose.yml        # Orchestrates all Docker containers
-├── db_init/
-│   └── init.sql              # Initializes the database table on first run
-└── python_app/
-├── Dockerfile              # Defines the Python application container
-├── requirements.txt        # Python dependencies
-├── collect_and_load.py     # Main script for continuous data collection
-└── export_to_parquet.py    # Utility script to export data
+- /abq-transit-project/
+- ├── docker-compose.yml        # Orchestrates all Docker containers
+- ├── db_init/
+- │   └── init.sql              # Initializes the database table on first run
+- └── python_app/
+- ├── Dockerfile              # Defines the Python application container
+- ├── requirements.txt        # Python dependencies
+- ├── collect_and_load.py     # Main script for continuous data collection
+- └── export_to_parquet.py    # Utility script to export data
 
 ---
 ## Requirements
