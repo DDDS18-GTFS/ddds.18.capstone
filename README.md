@@ -3,7 +3,7 @@
 This project continuously collects real-time vehicle position data from the City of Albuquerque's public transit API. The data is stored in a PostgreSQL database with the PostGIS extension for powerful geospatial querying. The entire application is containerized using Docker and Docker Compose for easy setup and deployment.
 
 ---
-## ## Features
+## Features
 
 * **Continuous Data Collection**: A Python script runs in a loop to fetch data every 30 seconds.
 * **Geospatial Database**: Uses PostgreSQL + PostGIS to store location data efficiently.
@@ -12,7 +12,7 @@ This project continuously collects real-time vehicle position data from the City
 * **Robust and Resilient**: Designed to handle network errors and shut down gracefully.
 
 ---
-## ## Project Structure
+## Project Structure
 /abq-transit-project/
 ├── docker-compose.yml        # Orchestrates all Docker containers
 ├── db_init/
@@ -24,13 +24,13 @@ This project continuously collects real-time vehicle position data from the City
 └── export_to_parquet.py    # Utility script to export data
 
 ---
-## ## Requirements
+## Requirements
 
 * Docker
 * Docker Compose
 
 ---
-## ## Setup and Running
+## Setup and Running
 
 1.  **Clone or set up the project files** according to the structure above.
 
@@ -45,9 +45,9 @@ This project continuously collects real-time vehicle position data from the City
 The first time you run this, Docker will build the Python image, create a persistent volume for the database, and run the `init.sql` script to create the `vehicle_snapshots` table. The `collect_and_load.py` script will then start running and collecting data.
 
 ---
-## ## Usage
+## Usage
 
-### ### Connecting to the Database
+### Connecting to the Database
 
 You can connect directly to the PostgreSQL database to run custom queries.
 
@@ -65,7 +65,7 @@ You can connect directly to the PostgreSQL database to run custom queries.
     ```
 3.  **Exit** by typing `\q`.
 
-### ### Exporting Data to Parquet
+### Exporting Data to Parquet
 
 Use the `export_to_parquet.py` script to save data from the database to a `.parquet` file. The output file will appear in the `python_app` directory.
 
@@ -84,9 +84,9 @@ Use the `export_to_parquet.py` script to save data from the database to a `.parq
         ```
 
 ---
-## ## Troubleshooting
+## Troubleshooting
 
-### ### 🔧 Error: `relation "vehicle_snapshots" does not exist`
+### 🔧 Error: `relation "vehicle_snapshots" does not exist`
 
 This is the most common error and occurs if the database starts without running the initialization script. The database logs will contain a line that says `Skipping initialization`.
 
