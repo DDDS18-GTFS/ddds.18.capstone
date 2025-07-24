@@ -1,0 +1,6 @@
+pandas
+requests
+cloud-sql-python-connector[pg8000]
+google-cloud-secret-manager
+psycopg2-binary
+pyarrow

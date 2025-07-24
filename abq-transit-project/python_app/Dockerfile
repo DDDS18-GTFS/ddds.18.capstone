@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Run the script when the container launches
-CMD ["python", "insert_data.py"]
+CMD ["python", "collect_and_load.py"]
