@@ -1,5 +1,4 @@
-version: '3.8'
-
+# The 'version' tag is obsolete and can be removed.
 services:
   db:
     image: postgis/postgis:16-3.4
@@ -12,6 +11,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./db_init/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   app:
     build: ./python_app
@@ -24,5 +24,7 @@ services:
       - DB_PASSWORD=mypassword
       - DB_HOST=db
 
+# This top-level 'volumes' block defines the named volume.
+# It should not be indented.
 volumes:
-  postgres_data:
+  postgres_data: {}
