@@ -1,0 +1,23 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'us-south1-docker.pkg.dev/ddds-18-db-abqtransit/cloud-run-source-deploy/abq-transit-collector-test', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-south1-docker.pkg.dev/ddds-18-db-abqtransit/cloud-run-source-deploy/abq-transit-collector-test']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: 
+  - 'run'
+  - 'deploy'
+  - 'abq-transit-collector-test'
+  - '--image=us-south1-docker.pkg.dev/ddds-18-db-abqtransit/cloud-run-source-deploy/abq-transit-collector-test'
+  - '--region=us-south1'
+  - '--allow-unauthenticated'
+  - '--set-env-vars=DB_HOST=34.174.41.88,DB_PORT=5432,DB_USER=myuser,DB_NAME=abq-transit-db,COLLECTION_INTERVAL=30'
+  - '--set-secrets=DB_PASSWORD=db-password-test:latest,API_KEY=colab-api-key:latest'
+  - '--memory=1Gi'
+  - '--cpu=1'
+  - '--timeout=3600'
+  - '--max-instances=1'
+  - '--min-instances=1'
+  - '--port=8080'
+images:
+- 'us-south1-docker.pkg.dev/ddds-18-db-abqtransit/cloud-run-source-deploy/abq-transit-collector-test'
